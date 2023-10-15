@@ -2,7 +2,9 @@
   "name": "@natepiano/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "vercel-build": "unset CI && unset CONTINUOUS_INTEGRATION && nx run-many --all --target=build"
+  },
   "private": true,
   "dependencies": {
     "lil-gui": "^0.18.2",

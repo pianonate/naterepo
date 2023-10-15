@@ -1,4 +1,7 @@
 {
+  "builds": [
+    { "src": "package.json", "use": "@vercel/node", "config": { "entrypoint": "scripts/vercel-build" } }
+  ],
   "rewrites": [
     {
       "source": "/",
@@ -14,3 +17,4 @@
     }
   ]
 }
+
