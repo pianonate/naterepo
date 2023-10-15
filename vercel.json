@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/metallic/(.*)",
+      "destination": "apps/metallic/$1"
+    },
+    {
+      "source": "/3dtext/(.*)",
+      "destination": "apps/three-d-text/$1"
+    }
+  ]
+}
