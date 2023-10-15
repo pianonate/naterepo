@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "vercel-build": "printenv && nx build metallic && nx build landing && nx build three-d-text"
+    "vercel-build": "printenv && nx run-many --all --target=build"
   },
   "private": true,
   "dependencies": {
