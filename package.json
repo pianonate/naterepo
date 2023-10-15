@@ -2,9 +2,7 @@
   "name": "@natepiano/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {
-    "vercel-build": "printenv && nx run-many --all --target=build"
-  },
+  "scripts": {},
   "private": true,
   "dependencies": {
     "lil-gui": "^0.18.2",
