@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "vercel-build": "unset CI && unset CONTINUOUS_INTEGRATION && nx run-many --all --target=build"
+    "vercel-build": "unset CI && unset CONTINUOUS_INTEGRATION && nx build metallic && nx build landing && nx build three-d-text"
   },
   "private": true,
   "dependencies": {
