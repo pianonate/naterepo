@@ -1,12 +1,16 @@
 {
   "rewrites": [
     {
+      "source": "/",
+      "destination": "/apps/landing/index.html"
+    },
+    {
       "source": "/metallic/(.*)",
-      "destination": "apps/metallic/$1"
+      "destination": "/apps/metallic/$1"
     },
     {
       "source": "/3dtext/(.*)",
-      "destination": "apps/three-d-text/$1"
+      "destination": "/apps/three-d-text/$1"
     }
   ]
 }
