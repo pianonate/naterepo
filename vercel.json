@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    {"source": "/", "destination": "/apps/landing/"},
+    {"source": "/(.*)", "destination": "/apps/landing/$1"},
     {"source": "/metallic/(.*)", "destination": "/apps/metallic/$1"},
     {"source": "/3dtext/(.*)", "destination": "/apps/three-d-text/$1"}
   ]
