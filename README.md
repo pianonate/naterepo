@@ -65,14 +65,15 @@ After that copy in the files
 - for now you can get rid of the template `.ts` items and folders created by `nx` - maybe you'll use them in other things you're trying
 - copy folders under `static` into `public` folder
 - make sure to load resources with `./` rather than `/` as you'll be bypassing the `publicDir` mechanism used in the tutorial and just explicitly dropping them into public from the nx scaffolding 
+- delete the favicon.ico created by nx so you can inherit form landing app
 
-update root level vercel.json file with rewrites to the app you added (examples)
+update root level vercel.json file with rewrites to the app you added (examples). please note that the landing has to be last or it will consume any rewrites intended for the others. i.e., if you put it first and go to /metallic then it will take anything prefixed with /metallic and send it to the landing destination.  don't do that.
 ```
 {
   "rewrites": [
-    {"source": "/", "destination": "/apps/landing/index.html"},
     {"source": "/metallic/(.*)", "destination": "/apps/metallic/$1"},
-    {"source": "/3dtext/(.*)", "destination": "/apps/three-d-text/$1"}
+    {"source": "/3dtext/(.*)", "destination": "/apps/three-d-text/$1"},
+    {"source": "/(.*)", "destination": "/apps/landing/$1"}
   ]
 }
 
