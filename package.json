@@ -5,7 +5,7 @@
   "scripts": {},
   "private": true,
   "dependencies": {
-    "@nx/react": "^16.10.0",
+    "@nx/react": "16.10.0",
     "lil-gui": "^0.18.2",
     "three": "^0.157.0",
     "tslib": "^2.3.0"
@@ -36,7 +36,7 @@
     "jest-environment-jsdom": "^29.4.1",
     "jsdom": "~22.1.0",
     "nx": "16.10.0",
-    "nx-cloud": "latest",
+    "nx-cloud": "16.5.2",
     "postcss": "^8.4.31",
     "prettier": "^2.6.2",
     "swc-loader": "0.1.15",
@@ -48,3 +48,4 @@
     "vitest": "~0.32.0"
   }
 }
+

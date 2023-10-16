@@ -87,7 +87,9 @@ update the webapp vite.config.js so that it has a base corresponding to the sour
   });
 ```
 
-finally, don't forget that if you want tailwind.css you'll need to apply it as described above in the tailwind section. don't forget that the three-journey.js lessons are using style.css not styles.css where the tailwind setup wants it to be.  it will add the imports to make tailwind work there so you'll need to adjust
+finally, don't forget that if you want tailwind.css you'll need to apply it as described above in the tailwind section. don't forget that the three-journey.js lessons are using style.css not styles.css where the tailwind setup wants it to be.  it will warn you that it didn't add imports so you'll need to edit style.css to match the other style.css if you want tailwind support at the top
+
+the defaults for tailwind seem to take care of setting the right border width so things look okay so far - play around with this more to verify
 
 ## vercel
 you created a project in vercel and associated it with the git repo `naterepo` which is this monorepo. this way every push to github results in a deployment on vercel
