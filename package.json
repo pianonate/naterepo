@@ -5,6 +5,7 @@
   "scripts": {},
   "private": true,
   "dependencies": {
+    "@nx/react": "^16.10.0",
     "lil-gui": "^0.18.2",
     "three": "^0.157.0",
     "tslib": "^2.3.0"
@@ -26,6 +27,7 @@
     "@typescript-eslint/parser": "^5.60.1",
     "@vitest/coverage-v8": "^0.34.6",
     "@vitest/ui": "~0.32.0",
+    "autoprefixer": "^10.4.16",
     "cypress": "^13.0.0",
     "eslint": "~8.46.0",
     "eslint-config-prettier": "8.1.0",
@@ -35,8 +37,10 @@
     "jsdom": "~22.1.0",
     "nx": "16.10.0",
     "nx-cloud": "latest",
+    "postcss": "^8.4.31",
     "prettier": "^2.6.2",
     "swc-loader": "0.1.15",
+    "tailwindcss": "^3.3.3",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
     "typescript": "~5.1.3",

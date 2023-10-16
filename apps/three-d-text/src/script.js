@@ -19,7 +19,7 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
-const axesHelper = new THREE.AxesHelper()
+//const axesHelper = new THREE.AxesHelper()
 //scene.add(axesHelper)
 
 /**
@@ -33,7 +33,7 @@ const matcapTexture = textureLoader.load('./textures/matcaps/3.png')
  */
 const fontLoader = new FontLoader()
 
-var textGeometry = null
+let textGeometry = null
 
 
 fontLoader.load(
@@ -150,7 +150,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 const clock = new THREE.Clock()
 
 const tick = () => {
-    const elapsedTime = clock.getElapsedTime()
+ //   const elapsedTime = clock.getElapsedTime()
 
     scene.traverse( ( node ) => {
 
