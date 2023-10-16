@@ -3,9 +3,9 @@
 describes a lot of how you set up a nx monorepo to manage and build your code and then use vercel to host - you're also using vite as a bundler which is key to your virtual directory strategy as configured via rewrites in vercel.json. it's a lot so read on.
 
 ## setup the monorepo
-init the monorepo named natepiano, set it up for typical typescript development
+init the monorepo named naterepo, set it up for typical typescript development
 ```
-npx create-nx-workspace@latest natepiano --preset=web-components --nx-cloud
+npx create-nx-workspace@latest naterepo --preset=web-components --nx-cloud
 ```
 make sure vercel CLI is installed:
 ```
