@@ -1,20 +1,21 @@
 import * as THREE from 'three'
-import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
+import { threesome } from '@naterepo/threesome'
 
+console.log(threesome())
 
 /**
  * debug
  */
 const gui = new dat.GUI()
 
-
-console.log( Object.values(gui))
+console.log(Object.values(gui))
 
 /**
  *
  */
-const cubeTextureLoader = new THREE.CubeTextureLoader
+const cubeTextureLoader = new THREE.CubeTextureLoader()
 
 /**
  * textures
@@ -28,7 +29,6 @@ const doorNormalTexture = textureLoader.load('./textures/door/normal.jpg')
 //const doorMetalnessTexture = textureLoader.load('./textures/door/metalness.jpg')
 //const doorRoughnessTexture = textureLoader.load('./textures/door/roughness.jpg')
 
-
 //const matcapTexture = textureLoader.load('./textures/matcaps/3.png')
 const gradientTexture = textureLoader.load('./textures/gradients/5.jpg')
 gradientTexture.minFilter = THREE.NearestFilter
@@ -36,14 +36,13 @@ gradientTexture.magFilter = THREE.NearestFilter
 gradientTexture.generateMipmaps = false
 
 const environmentMapTexture = cubeTextureLoader.load([
-    './textures/environmentMaps/3/px.jpg',
-    './textures/environmentMaps/3/nx.jpg',
-    './textures/environmentMaps/3/py.jpg',
-    './textures/environmentMaps/3/nx.jpg',
-    './textures/environmentMaps/3/pz.jpg',
-    './textures/environmentMaps/3/nx.jpg',
+  './textures/environmentMaps/3/px.jpg',
+  './textures/environmentMaps/3/nx.jpg',
+  './textures/environmentMaps/3/py.jpg',
+  './textures/environmentMaps/3/nx.jpg',
+  './textures/environmentMaps/3/pz.jpg',
+  './textures/environmentMaps/3/nx.jpg',
 ])
-
 
 /**
  * Base
@@ -97,25 +96,18 @@ material.transparent = false
 material.side = THREE.DoubleSide
 
 gui.add(material, 'transparent')
-gui.add(material, 'opacity').min(.2).max(1).step(0.0001)
+gui.add(material, 'opacity').min(0.2).max(1).step(0.0001)
 
 gui.add(material, 'wireframe')
 //gui.add(material, 'flatShading')
 
+const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5, 128, 128), material)
 
-const sphere = new THREE.Mesh(
-    new THREE.SphereGeometry(0.5, 128, 128),
-    material
-)
-
-const plane = new THREE.Mesh(
-    new THREE.PlaneGeometry(1, 1, 100, 100),
-    material
-)
+const plane = new THREE.Mesh(new THREE.PlaneGeometry(1, 1, 100, 100), material)
 
 const torus = new THREE.Mesh(
-    new THREE.TorusGeometry(0.3, 0.2, 64, 128),
-    material
+  new THREE.TorusGeometry(0.3, 0.2, 64, 128),
+  material
 )
 
 sphere.position.x = -1.5
@@ -141,29 +133,61 @@ scene.add(pointLight)
  * Sizes
  */
 const sizes = {
-    width: window.innerWidth,
-    height: window.innerHeight
+  width: window.innerWidth,
+  height: window.innerHeight,
 }
 
-window.addEventListener('resize', () => {
-    // Update sizes
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
+/*window.addEventListener('resize', () => {
+  // Update sizes
+  sizes.width = window.innerWidth
+  sizes.height = window.innerHeight
 
-    // Update camera
-    camera.aspect = sizes.width / sizes.height
-    camera.updateProjectionMatrix()
+  // Update camera
+  camera.aspect = sizes.width / sizes.height
+  camera.updateProjectionMatrix()
 
-    // Update renderer
-    renderer.setSize(sizes.width, sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  // Update renderer
+  renderer.setSize(sizes.width, sizes.height)
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+})*/
+const updateDimensions = () => {
+  // Update sizes
+  const viewport = window.visualViewport || window
+  const newWidth = viewport.width || window.innerWidth
+  const newHeight = viewport.height || window.innerHeight
+
+  sizes.width = newWidth
+  sizes.height = newHeight
+
+  // Update camera
+  camera.aspect = sizes.width / sizes.height
+  camera.updateProjectionMatrix()
+
+  // Update renderer
+  renderer.setSize(sizes.width, sizes.height)
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+}
+
+window.addEventListener('resize', updateDimensions)
+
+// Specific for iOS orientation change
+window.addEventListener('orientationchange', () => {
+  // Give browsers time to handle orientation change internally
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(updateDimensions)
+  })
 })
 
 /**
  * Camera
  */
 // Base camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
+const camera = new THREE.PerspectiveCamera(
+  75,
+  sizes.width / sizes.height,
+  0.1,
+  100
+)
 camera.position.x = 1
 camera.position.y = 1
 camera.position.z = 2
@@ -177,7 +201,7 @@ controls.enableDamping = true
  * Renderer
  */
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
+  canvas: canvas,
 })
 //renderer.outputColorSpace = THREE.LinearSRGBColorSpace
 renderer.setSize(sizes.width, sizes.height)
@@ -189,25 +213,25 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 const clock = new THREE.Clock()
 
 const tick = () => {
-    const elapsedTime = clock.getElapsedTime()
+  const elapsedTime = clock.getElapsedTime()
 
-    // Update objects
-    sphere.rotation.y = 0.1 * elapsedTime
-    plane.rotation.y = 0.25 * elapsedTime
-    torus.rotation.y = 0.1 * elapsedTime
+  // Update objects
+  sphere.rotation.y = 0.1 * elapsedTime
+  plane.rotation.y = 0.25 * elapsedTime
+  torus.rotation.y = 0.1 * elapsedTime
 
-    sphere.rotation.x = 0.15 * elapsedTime
-    plane.rotation.x = 0.15 * elapsedTime
-    torus.rotation.x = 0.15 * elapsedTime
+  sphere.rotation.x = 0.15 * elapsedTime
+  plane.rotation.x = 0.15 * elapsedTime
+  torus.rotation.x = 0.15 * elapsedTime
 
-    // Update controls
-    controls.update()
+  // Update controls
+  controls.update()
 
-    // Render
-    renderer.render(scene, camera)
+  // Render
+  renderer.render(scene, camera)
 
-    // Call tick again on the next frame
-    window.requestAnimationFrame(tick)
+  // Call tick again on the next frame
+  window.requestAnimationFrame(tick)
 }
 
 tick()

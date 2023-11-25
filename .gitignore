@@ -38,6 +38,7 @@ testem.log
 .DS_Store
 Thumbs.db
 .vercel
+.nx/*
 
 # nx-cloud - hidden for secrets
 nx-cloud.env

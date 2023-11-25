@@ -106,18 +106,45 @@ const sizes = {
     height: window.innerHeight
 }
 
-window.addEventListener('resize', () => {
-    // Update sizes
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
+/*window.addEventListener('resize', () => {
+  // Update sizes
+  sizes.width = window.innerWidth
+  sizes.height = window.innerHeight
 
-    // Update camera
-    camera.aspect = sizes.width / sizes.height
-    camera.updateProjectionMatrix()
+  // Update camera
+  camera.aspect = sizes.width / sizes.height
+  camera.updateProjectionMatrix()
 
-    // Update renderer
-    renderer.setSize(sizes.width, sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  // Update renderer
+  renderer.setSize(sizes.width, sizes.height)
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+})*/
+const updateDimensions = () => {
+  // Update sizes
+  const viewport = window.visualViewport || window
+  const newWidth = viewport.width || window.innerWidth
+  const newHeight = viewport.height || window.innerHeight
+
+  sizes.width = newWidth
+  sizes.height = newHeight
+
+  // Update camera
+  camera.aspect = sizes.width / sizes.height
+  camera.updateProjectionMatrix()
+
+  // Update renderer
+  renderer.setSize(sizes.width, sizes.height)
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+}
+
+window.addEventListener('resize', updateDimensions)
+
+// Specific for iOS orientation change
+window.addEventListener('orientationchange', () => {
+  // Give browsers time to handle orientation change internally
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(updateDimensions)
+  })
 })
 
 /**
@@ -147,7 +174,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 /**
  * Animate
  */
-const clock = new THREE.Clock()
+//const clock = new THREE.Clock()
 
 const tick = () => {
  //   const elapsedTime = clock.getElapsedTime()
@@ -166,7 +193,7 @@ const tick = () => {
 
         }
 
-    } );
+    } )
 
     // Update controls
     controls.update()

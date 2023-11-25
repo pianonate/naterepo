@@ -65,7 +65,7 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/three-d-text/**/*.ts"]
+        "lintFilePatterns": ["apps/three-d-text/**/*.ts", "apps/three-d-text/**/*.js"]
       }
     }
   }
